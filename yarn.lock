@@ -9880,23 +9880,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"overlayscrollbars-react@npm:^0.5.6":
-  version: 0.5.6
-  resolution: "overlayscrollbars-react@npm:0.5.6"
-  peerDependencies:
-    overlayscrollbars: ^2.0.0
-    react: ">=16.8.0"
-  checksum: 10c0/59a2aad3664d81dc4dee5e747b72bb2645047e0e6d300d9583244167d1e4b19c4cc263932e4b112d5c24358430f78d15d34ea389beb8845e3b5319ccc57db8d8
-  languageName: node
-  linkType: hard
-
-"overlayscrollbars@npm:^2.8.3":
-  version: 2.8.3
-  resolution: "overlayscrollbars@npm:2.8.3"
-  checksum: 10c0/1f0713e981ce27e0cd9261a6a0acfe080bd44c21c9f6cbb9c3df582c155d11a0c949553d7ea4e01a107d784d527c5cf3465ab6979affca9e430d450968b763f6
-  languageName: node
-  linkType: hard
-
 "p-limit@npm:^2.2.0":
   version: 2.3.0
   resolution: "p-limit@npm:2.3.0"
@@ -11780,8 +11763,6 @@ __metadata:
     eslint-plugin-react: "npm:^7.34.2"
     eslint-plugin-react-hooks: "npm:^4.6.2"
     eslint-plugin-sort-imports-es6-autofix: "npm:^0.6.0"
-    overlayscrollbars: "npm:^2.8.3"
-    overlayscrollbars-react: "npm:^0.5.6"
     postcss: "npm:^8.4.38"
     prettier: "npm:^3.2.5"
     react: "npm:^18.3.1"
