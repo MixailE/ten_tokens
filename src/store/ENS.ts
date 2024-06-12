@@ -8,6 +8,10 @@ export class ENS extends Entity {
     return this.address || '0x'
   }
 
+  static override process(value: ENS) {
+    return { ...value, address: value?.address?.toLowerCase() ?? '0x' }
+  }
+
   static override indexes = ['address', 'ensName'] as const
   static override key = 'ENS'
 }

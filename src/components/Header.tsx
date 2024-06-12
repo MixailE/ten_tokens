@@ -1,5 +1,4 @@
-import { ConnectWallet, WalletInstance } from '@thirdweb-dev/react'
-import useLowercasedAddress from 'helpers/useLowercasedAddress'
+import { ConnectWallet, WalletInstance, useAddress } from '@thirdweb-dev/react'
 import Search from './Search'
 import ConnectedAddress from './ConnectedAddress'
 
@@ -10,7 +9,7 @@ export default function ({
   search: string | undefined
   onChangeSearch: (search?: string) => void
 }) {
-  const address = useLowercasedAddress()
+  const address = useAddress()
 
   async function onConnect(wallet: WalletInstance) {
     onChangeSearch(await wallet.getAddress())

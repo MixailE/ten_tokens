@@ -20,14 +20,14 @@ export const getTokenBalancesAndAllowances = new Endpoint(
         balances[nativeToken.address] = nativeBalance
       }
       return {
-        address: address.toLowerCase(),
+        address,
         balances,
         tokenAllowance,
       }
     } catch (e) {
       console.error(e)
       return {
-        address: address.toLowerCase(),
+        address,
       }
     }
   },
@@ -50,13 +50,13 @@ export const getTokenBalances = new Endpoint(
         balances[nativeToken.pk()] = nativeBalance
       }
       return {
-        address: address.toLowerCase(),
+        address,
         balances,
       }
     } catch (e) {
       console.error(e)
       return {
-        address: address.toLowerCase(),
+        address,
       }
     }
   },

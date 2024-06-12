@@ -7,6 +7,10 @@ export class Portfolio extends Entity {
   balances: { [chainAndAddress: string]: bigint } = {}
   tokenAllowance: { [chainAndAddress: string]: bigint } = {}
 
+  static override process(value: Portfolio) {
+    return { ...value, address: value.address.toLowerCase() }
+  }
+
   getAllowance(address: string) {
     // If the address is the native token (e.g., ETH), return the maximum integer value.
     // This is because native tokens do not have allowances like ERC-20 tokens.
@@ -14,12 +18,12 @@ export class Portfolio extends Entity {
       return MAX_INT
     }
 
-    const key = address.toLowerCase()
+    const key = address
     return this.tokenAllowance[key] ?? 0n
   }
 
   getBalance(address: string) {
-    const key = address.toLowerCase()
+    const key = address
     return this.balances[key] ?? 0n
   }
 

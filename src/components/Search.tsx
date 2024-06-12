@@ -49,7 +49,7 @@ export default ({
       return false
     }
     setSearch('')
-    onChange(search.toLowerCase())
+    onChange(search)
     return false
   }
 

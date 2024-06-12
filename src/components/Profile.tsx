@@ -23,7 +23,7 @@ export default function ({ address }: { address: string }) {
           errorComponent={ErrorList}
         >
           <TokenList
-            address={address.toLowerCase()}
+            address={address}
             tokens={tokensData.map((token) => TokenEntry.fromJS(token))}
           />
         </AsyncBoundary>

@@ -10,7 +10,7 @@ export const getENSNameByName = new Endpoint(
     const address = await publicMainnetProvider.resolveName(search)
 
     return {
-      address: address?.toLowerCase(),
+      address,
       ensName: search,
     }
   },
@@ -25,7 +25,7 @@ export const getENSNameByAddress = new Endpoint(
     const ensName = await publicMainnetProvider.lookupAddress(address)
 
     return {
-      address: address?.toLowerCase(),
+      address,
       ensName,
     }
   },

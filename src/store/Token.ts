@@ -12,8 +12,12 @@ export class Token extends Entity {
     return this.address === NATIVE_ADDRESS
   }
 
+  static override process(value: Token) {
+    return { ...value, address: value.address.toLowerCase() }
+  }
+
   pk() {
-    return this.address
+    return this.address.toLowerCase()
   }
 
   static override key = 'Token'
