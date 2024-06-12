@@ -3,7 +3,7 @@ import { SyntheticEvent, useState } from 'react'
 import { ethers } from 'ethers'
 import { ensRegex, getAddressByENS } from 'store/getENS'
 import { useController } from '@rest-hooks/react'
-import Spinner from '../shared/Spinner'
+import Spinner from 'components/shared/Spinner'
 import SearchIcon from 'icons/SearchIcon'
 
 export default ({

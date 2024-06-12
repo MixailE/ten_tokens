@@ -3,7 +3,7 @@ import { publicMainnetProvider } from 'helpers/getProvider'
 import { ENS } from './ENS'
 
 export const ensRegex =
-  /^(?=.{1,255}$)(?:(?!-)[a-z0-9-]{1,63}(?<!-)\.)+[a-z]{2,63}$/
+  /^[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/
 
 export const getAddressByENS = new Endpoint(
   async (search: string) => {
