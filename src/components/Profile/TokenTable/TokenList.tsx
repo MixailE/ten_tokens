@@ -38,7 +38,6 @@ export default function List({
         <Token
           key={token.pk()}
           {...token}
-          wallet={address}
           balance={portfolio?.getBalance(token.address)}
           allowance={portfolio?.getAllowance(token.address)}
         />
