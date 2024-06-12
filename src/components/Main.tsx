@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { KeyboardEvent, useState } from 'react'
 import { ConnectWallet, WalletInstance } from '@thirdweb-dev/react'
 import Search from 'components/Search'
 import Profile from 'components/Profile'
@@ -19,6 +19,11 @@ export default function () {
 
   function onReset() {
     setInput('')
+  }
+
+  function onPressKey(event: KeyboardEvent<HTMLAnchorElement>) {
+    if (event.key !== 'Enter') return
+    onReset()
   }
 
   return (
@@ -47,10 +52,12 @@ export default function () {
             <>
               <div className="mt-3 mx-3 md:mx-0 mb-3">
                 <a
-                  className="flex gap-1 text-blue-400 items-center cursor-pointer"
+                  className="inline-flex gap-2 text-blue-400 items-center cursor-pointer"
                   onClick={onReset}
+                  onKeyDown={onPressKey}
+                  tabIndex={0}
                 >
-                  <ArrowBack className="w-6 h-6" /> Back
+                  <ArrowBack className="w-3 h-6" /> Back
                 </a>
               </div>
               <Profile address={input} />

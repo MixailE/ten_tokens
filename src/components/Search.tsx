@@ -15,7 +15,7 @@ export default ({
 }) => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-  const [input, setSearch] = useState<string | undefined>(value)
+  const [search, setSearch] = useState<string | undefined>(value)
   const handleChangeInput = (event: { target: { value: string } }) => {
     setSearch(event.target.value || '')
     setError('')
@@ -23,11 +23,12 @@ export default ({
   const ctrl = useController()
 
   async function onSubmit() {
-    if (!input) return
-    if (ensRegex.test(input)) {
+    if (!search) return
+    setSearch('')
+    if (ensRegex.test(search)) {
       try {
         setLoading(true)
-        const { address } = await ctrl.fetch(getENSNameByName, input)
+        const { address } = await ctrl.fetch(getENSNameByName, search)
         setLoading(false)
 
         if (address) {
@@ -43,16 +44,16 @@ export default ({
         setError('Error resolving ENS name')
         return
       }
-    } else if (!ethers.utils.isAddress(input)) {
+    } else if (!ethers.utils.isAddress(search)) {
       setError('Invalid address!')
       return
     }
     setSearch('')
-    onChange(input.toLowerCase())
+    onChange(search.toLowerCase())
   }
 
   return (
-    <form className="flex flex-col items-start w-full">
+    <form className="flex flex-col items-start w-full" onSubmit={onSubmit}>
       <label
         htmlFor="default-search"
         className="mb-2 text-sm font-medium text-gray-900 sr-only"
@@ -64,7 +65,7 @@ export default ({
           <SearchIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
         </div>
         <input
-          value={input}
+          value={search}
           onChange={handleChangeInput}
           type="search"
           id="default-search"
@@ -72,8 +73,8 @@ export default ({
           placeholder="Search address"
           required
         />
-        {input &&
-          input.length > 0 &&
+        {search &&
+          search.length > 0 &&
           (loading ? (
             <div className="absolute end-2.5 bottom-2 font-medium rounded-full text-sm px-2 py-2">
               <Spinner className="inline w-4 h-4 text-slate-400 animate-spin fill-gray-800" />
