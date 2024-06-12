@@ -6,10 +6,10 @@ import ErrorList from 'components/Profile/TokenTable/ErrorList'
 import ProfileInfo from 'components/shared/ProfileInfo'
 import SkeletonTokenListLoading from 'components/Profile/TokenTable/SkeletonTokenListLoading'
 
+const tokens = tokensData.map((token) => TokenEntry.fromJS(token))
+
 export default function ({ address }: { address: string }) {
   if (!address) return null
-
-  const tokens = tokensData.map((token) => TokenEntry.fromJS(token))
 
   return (
     <>

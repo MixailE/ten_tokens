@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 import { useCache, useSuspense } from '@rest-hooks/react'
 import { ENSIndex } from 'store/ENS'
-import { getAddressByENS } from 'store/getENS'
+import { getENSByAddress } from 'store/getENS'
 import Address from 'components/shared/Address'
 
 function TruncatedENSName({ name }: { name: string }) {
@@ -13,7 +13,7 @@ function TruncatedENSName({ name }: { name: string }) {
 }
 
 function ENSResolver({ address }: { address: string }) {
-  const ensRecord = useSuspense(getAddressByENS, address)
+  const ensRecord = useSuspense(getENSByAddress, address)
   if (ensRecord && ensRecord.ensName)
     return <TruncatedENSName name={ensRecord.ensName} />
 
