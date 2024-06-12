@@ -1,72 +1,32 @@
-import { KeyboardEvent, useState } from 'react'
-import { ConnectWallet, WalletInstance } from '@thirdweb-dev/react'
-import Search from 'components/Search'
+import { useState } from 'react'
 import Profile from 'components/Profile'
 import SelectAddress from 'components/SelectAddress'
-import ConnectedAddress from 'components/ConnectedAddress'
-import ArrowBack from 'icons/ArrowBack'
-import { AsyncBoundary } from '@rest-hooks/react'
-import ErrorList from './ErrorList'
-import useLowercasedAddress from 'helpers/useLowercasedAddress'
+import Header from './Header'
+import BackButton from './BackButton'
 
 export default function () {
-  const address = useLowercasedAddress()
-  const [input, setInput] = useState<string | undefined>('')
-
-  async function onConnect(wallet: WalletInstance) {
-    setInput(await wallet.getAddress())
-  }
+  const [search, setInput] = useState<string | undefined>('')
 
   function onReset() {
     setInput('')
-  }
-
-  function onPressKey(event: KeyboardEvent<HTMLAnchorElement>) {
-    if (event.key !== 'Enter') return
-    onReset()
   }
 
   return (
     <div className="sm:p-1 container mx-auto max-w-full sm:max-w-[1060px]">
       <div className="flex justify-center mt-5">
         <div className="w-full flex flex-col justify-center">
-          <div
-            className={`flex gap-4 mx-3 md:mx-0 ${address ? 'flex-col-reverse sm:flex-row' : ''}`}
-          >
-            <div className="flex-grow flex">
-              <AsyncBoundary fallback={null} errorComponent={ErrorList}>
-                <Search value={input} onChange={setInput} />
-              </AsyncBoundary>
-            </div>
-            <div>
-              <ConnectWallet
-                btnTitle="Connect"
-                className="w-full !min-w-20 md:!min-w-36"
-                onConnect={onConnect}
-                detailsBtn={ConnectedAddress}
-              />
-            </div>
-          </div>
+          <Header search={search} onChangeSearch={setInput} />
 
-          {input ? (
-            <>
-              <div className="mt-3 mx-3 md:mx-0 mb-3">
-                <a
-                  className="inline-flex gap-2 text-blue-400 items-center cursor-pointer"
-                  onClick={onReset}
-                  onKeyDown={onPressKey}
-                  tabIndex={0}
-                >
-                  <ArrowBack className="w-3 h-6" /> Back
-                </a>
-              </div>
-              <Profile address={input} />
-            </>
-          ) : (
-            <div className="mx-3 md:mx-0 mt-5">
+          <div className="mt-5 mx-3 md:mx-0 flex flex-col gap-4">
+            {search ? (
+              <>
+                <BackButton onBack={onReset} />
+                <Profile address={search} />
+              </>
+            ) : (
               <SelectAddress onClick={setInput} />
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
     </div>

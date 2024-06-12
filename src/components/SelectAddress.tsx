@@ -4,27 +4,29 @@ import { WalletCard } from './WalletCard'
 import LoadExample from './LoadExample'
 import { EXAMPLE_ADDRESS } from 'helpers/constants'
 import useLowerCasedAddress from 'helpers/useLowercasedAddress'
+import { useMemo } from 'react'
 
 export default function ({ onClick }: { onClick: (address: string) => void }) {
   const address = useLowerCasedAddress()
   const portfolios = useCache(allPortfolios)
 
-  if (!address && (!portfolios || portfolios?.length === 0))
+  const addresses = useMemo(() => {
+    const addresses = new Set<string>()
+
+    if (address) addresses.add(address)
+    portfolios?.forEach((portfolio) => addresses.add(portfolio.address))
+
+    return [...addresses.keys()]
+  }, [address, portfolios])
+
+  if (addresses.length === 0)
     return <LoadExample example={EXAMPLE_ADDRESS} onClick={onClick} />
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-      {address && <WalletCard address={address} onClick={onClick} />}
-      {portfolios &&
-        portfolios
-          ?.filter((portfolio) => portfolio.address !== address)
-          ?.map((portfolio) => (
-            <WalletCard
-              key={portfolio.address}
-              address={portfolio.address}
-              onClick={onClick}
-            />
-          ))}
+      {addresses.map((address) => (
+        <WalletCard key={address} address={address} onClick={onClick} />
+      ))}
     </div>
   )
 }

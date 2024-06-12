@@ -17,7 +17,7 @@ export default function ({ address }: { address: string }) {
         <ProfileInfo address={address} title="Wallet Overview" />
       </div>
 
-      <div className="bg-white rounded-lg flex flex-col items-center mt-5">
+      <div className="bg-white rounded-lg flex flex-col items-center">
         <AsyncBoundary
           fallback={<SkeletonTokenListLoading tokens={tokens} />}
           errorComponent={ErrorList}

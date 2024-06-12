@@ -1,5 +1,5 @@
 import Arrow from 'icons/Arrow'
-import { useState } from 'react'
+import { SyntheticEvent, useState } from 'react'
 import { ethers } from 'ethers'
 import { ensRegex, getENSNameByName } from 'store/getENSName'
 import { useController } from '@rest-hooks/react'
@@ -23,7 +23,7 @@ export default ({
   const ctrl = useController()
 
   async function onSubmit() {
-    if (!search) return
+    if (!search) return false
     setSearch('')
     if (ensRegex.test(search)) {
       try {
@@ -37,23 +37,29 @@ export default ({
           return
         } else {
           setError('ENS name not found')
-          return
+          return false
         }
       } catch (err) {
         setLoading(false)
         setError('Error resolving ENS name')
-        return
+        return false
       }
     } else if (!ethers.utils.isAddress(search)) {
       setError('Invalid address!')
-      return
+      return false
     }
     setSearch('')
     onChange(search.toLowerCase())
+    return false
+  }
+
+  function onSubmitForm(e: SyntheticEvent<HTMLFormElement>) {
+    e.preventDefault()
+    onSubmit()
   }
 
   return (
-    <form className="flex flex-col items-start w-full" onSubmit={onSubmit}>
+    <form className="flex flex-col items-start w-full" onSubmit={onSubmitForm}>
       <label
         htmlFor="default-search"
         className="mb-2 text-sm font-medium text-gray-900 sr-only"
@@ -73,21 +79,20 @@ export default ({
           placeholder="Search address"
           required
         />
-        {search &&
-          search.length > 0 &&
-          (loading ? (
-            <div className="absolute end-2.5 bottom-2 font-medium rounded-full text-sm px-2 py-2">
-              <Spinner className="inline w-4 h-4 text-slate-400 animate-spin fill-gray-800" />
-            </div>
-          ) : (
-            <button
-              type="button"
-              onClick={onSubmit}
-              className="absolute end-2.5 bottom-2 focus:backdrop-brightness-90 focus:outline-none font-medium rounded-full text-sm px-2 py-2"
-            >
-              <Arrow className="w-4 h-4" />
-            </button>
-          ))}
+        {loading && (
+          <div className="absolute end-2.5 bottom-2 font-medium rounded-full text-sm px-2 py-2">
+            <Spinner className="inline w-4 h-4 text-slate-400 animate-spin fill-gray-800" />
+          </div>
+        )}
+        {search && search.length > 0 && !loading && (
+          <button
+            type="button"
+            onClick={onSubmit}
+            className="absolute end-2.5 bottom-2 focus:backdrop-brightness-90 focus:outline-none font-medium rounded-full text-sm px-2 py-2"
+          >
+            <Arrow className="w-4 h-4" />
+          </button>
+        )}
       </div>
       {error && (
         <p className="mt-2 text-sm text-gray-900">
