@@ -25,7 +25,7 @@ export default function ({
       <span className="flex items-center justify-center md:w-6 w-10 mr-2 col-start-1 col-end-2 row-start-1 row-end-3">
         <TokenImage className="md:w-6 w-10 h-10 md:h-6" address={address} />
       </span>
-      <span className="flex items-center max-w-32 truncate col-start-2 col-end-4 row-start-1 row-end-2 md:row-start-1 md:row-end-3 leading-normal">
+      <span className="flex items-center max-w-32 truncate col-start-2 col-end-7 row-start-1 row-end-2 md:row-start-1 md:row-end-3 leading-normal">
         {name}
       </span>
       <span className="flex justify-start items-center md:hidden col-start-2 col-end-7 row-start-2 row-end-3">
