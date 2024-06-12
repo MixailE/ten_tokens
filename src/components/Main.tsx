@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { ConnectWallet, WalletInstance } from '@thirdweb-dev/react'
-import AddressInput from 'components/AddressInput'
+import Search from 'components/Search'
 import Profile from 'components/Profile'
 import SelectAddress from 'components/SelectAddress'
 import ConnectedAddress from 'components/ConnectedAddress'
@@ -26,7 +26,7 @@ export default function () {
           <div className="flex gap-4 flex-col-reverse mx-3 md:mx-0 sm:flex-row">
             <div className="flex-grow flex">
               <AsyncBoundary fallback={null} errorComponent={ErrorList}>
-                <AddressInput value={input} onChange={setInput} />
+                <Search value={input} onChange={setInput} />
               </AsyncBoundary>
             </div>
             <div>
