@@ -4,5 +4,10 @@ export default function ({
   address,
   ...props
 }: { address: string } & ImgHTMLAttributes<HTMLImageElement>) {
-  return <img src={`/images/${address.toLowerCase()}.webp`} {...props} />
+  return (
+    <img
+      src={`${import.meta.env['BASE_URL']}/images/${address.toLowerCase()}.webp`}
+      {...props}
+    />
+  )
 }
