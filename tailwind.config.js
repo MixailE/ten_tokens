@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {
       gridTemplateColumns: {
-        'custom-layout': '40px repeat(6, 1fr)',
+        'custom-layout': '40px repeat(4, 1fr)',
       },
       gridTemplateRows: {
         'custom-layout': 'repeat(2,1fr)',

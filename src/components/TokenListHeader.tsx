@@ -6,10 +6,10 @@ export default function () {
         Name
       </span>
       <span className="flex justify-end items-center md:hidden col-start-2 col-end-4 row-start-2 row-end-3"></span>
-      <span className="flex justify-end items-center text-right col-start-7 col-end-8 row-start-1 row-end-2 md:col-start-6 md:col-end-7">
+      <span className="flex justify-end items-center text-right col-start-5 col-end-6 row-start-1 row-end-2 md:col-start-4 md:col-end-5">
         Allowance
       </span>
-      <span className="justify-end items-center hidden text-right md:flex col-start-6 col-end-8 md:col-start-7 row-start-2 row-end-3 md:row-start-1 md:row-end-3">
+      <span className="justify-end items-center hidden text-right md:flex col-start-5 col-end-6 row-start-2 row-end-3 md:row-start-1 md:row-end-3">
         Balance
       </span>
     </li>
