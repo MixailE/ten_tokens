@@ -20,13 +20,13 @@ export default function ({ tokens }: { tokens: Token[] }) {
           <span className="flex items-center max-w-32 truncate col-start-2 col-end-4 row-start-1 row-end-2 md:row-start-1 md:row-end-3 leading-normal">
             {token.name}
           </span>
-          <span className="flex justify-start items-center md:hidden col-start-2 col-end-7 row-start-2 row-end-3">
+          <span className="flex justify-start items-center md:hidden col-start-2 col-end-5 row-start-2 row-end-3">
             <div className="h-2 bg-gray-300 rounded-full dark:bg-gray-700 w-12"></div>
           </span>
-          <span className="flex justify-end items-center text-right col-start-7 col-end-8 row-start-1 row-end-3 md:row-end-2 md:col-start-6 md:col-end-7">
+          <span className="flex justify-end items-center text-right col-start-5 col-end-6 row-start-1 row-end-3 md:row-end-2 md:col-start-6 md:col-end-5">
             <div className="w-20 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
           </span>
-          <span className="justify-end items-center hidden text-right md:flex col-start-6 col-end-8 row-start-2 row-end-3 md:row-start-1 md:row-end-3">
+          <span className="justify-end items-center hidden text-right md:flex col-start-4 col-end-5 row-start-2 row-end-3 md:row-start-1 md:row-end-3">
             <div className="h-2 bg-gray-300 rounded-full dark:bg-gray-700 w-12"></div>
           </span>
         </li>
