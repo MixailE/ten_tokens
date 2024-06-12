@@ -1,6 +1,6 @@
-import { TokenAllowance } from './TokenAllowance'
-import { TokenBalance } from './TokenBalance'
-import TokenImage from './TokenImage'
+import { TokenAllowance } from 'components/Profile/TokenTable/TokenAllowance'
+import { TokenBalance } from 'components/Profile/TokenTable/TokenBalance'
+import TokenImage from 'components/Profile/TokenTable/TokenImage'
 
 interface TokenProps {
   address: string

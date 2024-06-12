@@ -1,12 +1,12 @@
 import { useCache, useLive, useSuspense } from '@rest-hooks/react'
-import Token from './Token'
 import {
   getTokenBalances,
   getTokenBalancesAndAllowances,
 } from 'store/getBalance'
 import { PortfolioIndex } from 'store/Portfolio'
 import { Token as TokenEntry } from 'store/Token'
-import TokenListHeader from './TokenListHeader'
+import TokenListHeader from 'components/Profile/TokenTable/TokenListHeader'
+import Token from 'components/Profile/TokenTable/Token'
 
 export default function List({
   address,

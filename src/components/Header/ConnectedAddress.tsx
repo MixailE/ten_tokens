@@ -1,6 +1,6 @@
-import ProfileAvatar from './ProfileAvatar'
-import ENSOrAddress from './ENSOrAddress'
 import useLowercasedAddress from 'helpers/useLowercasedAddress'
+import ProfileAvatar from 'components/shared/ProfileAvatar'
+import ENSOrAddress from 'components/shared/ENSOrAddress'
 
 export default function () {
   const address = useLowercasedAddress()

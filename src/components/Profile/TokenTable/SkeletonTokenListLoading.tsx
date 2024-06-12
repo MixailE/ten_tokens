@@ -1,5 +1,5 @@
-import TokenImage from './TokenImage'
-import TokenListHeader from './TokenListHeader'
+import TokenImage from 'components/Profile/TokenTable/TokenImage'
+import TokenListHeader from 'components/Profile/TokenTable/TokenListHeader'
 import { Token } from 'store/Token'
 
 export default function ({ tokens }: { tokens: Token[] }) {

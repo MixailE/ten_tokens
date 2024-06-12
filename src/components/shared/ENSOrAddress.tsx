@@ -1,8 +1,8 @@
+import { Suspense } from 'react'
 import { useCache, useSuspense } from '@rest-hooks/react'
 import { ENSIndex } from 'store/ENS'
 import { getENSNameByAddress } from 'store/getENSName'
-import Address from './Address'
-import { Suspense } from 'react'
+import Address from 'components/shared/Address'
 
 function TruncatedENSName({ name }: { name: string }) {
   return (

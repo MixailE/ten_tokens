@@ -6,8 +6,7 @@ export const ROUTER_CONTRACT_ADDRESS =
 
 export const NATIVE_ADDRESS = '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
 
-// k06a.eth
-export const EXAMPLE_ADDRESS = '0x083fc10ce7e97cafbae0fe332a9c4384c5f54e45'
+export const EXAMPLE_ADDRESS = '0x28c6c06298d514db089934071355e5743bf21d60'
 
 export enum Chain {
   Ethereum = 1,

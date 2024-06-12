@@ -1,10 +1,10 @@
+import { useMemo } from 'react'
 import { useCache } from '@rest-hooks/react'
 import { allPortfolios } from 'store/Portfolio'
-import { WalletCard } from './WalletCard'
-import LoadExample from './LoadExample'
 import { EXAMPLE_ADDRESS } from 'helpers/constants'
 import useLowerCasedAddress from 'helpers/useLowercasedAddress'
-import { useMemo } from 'react'
+import { WalletCard } from 'components/Dashboard/WalletCard'
+import LoadExample from 'components/Dashboard/LoadExample'
 
 export default function ({ onClick }: { onClick: (address: string) => void }) {
   const address = useLowerCasedAddress()

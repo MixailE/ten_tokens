@@ -1,4 +1,4 @@
-import ProfileInfo from './ProfileInfo'
+import ProfileInfo from 'components/shared/ProfileInfo'
 import ArrowBack from 'icons/ArrowBack'
 
 export function WalletCard({

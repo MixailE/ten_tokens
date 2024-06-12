@@ -1,5 +1,5 @@
-import ENSOrAddress from './ENSOrAddress'
-import ProfileAvatar from './ProfileAvatar'
+import ENSOrAddress from 'components/shared/ENSOrAddress'
+import ProfileAvatar from 'components/shared/ProfileAvatar'
 
 export default function ({
   address,

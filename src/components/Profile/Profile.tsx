@@ -1,10 +1,10 @@
 import { tokensData } from 'helpers/tokens'
 import { Token as TokenEntry } from 'store/Token'
-import SkeletonTokenListLoading from './SkeletonTokenListLoading'
 import { AsyncBoundary } from '@rest-hooks/react'
-import TokenList from './TokenList'
-import ErrorList from './ErrorList'
-import ProfileInfo from './ProfileInfo'
+import TokenList from 'components/Profile/TokenTable/TokenList'
+import ErrorList from 'components/Profile/TokenTable/ErrorList'
+import ProfileInfo from 'components/shared/ProfileInfo'
+import SkeletonTokenListLoading from 'components/Profile/TokenTable/SkeletonTokenListLoading'
 
 export default function ({ address }: { address: string }) {
   if (!address) return null

@@ -1,4 +1,5 @@
 import { ethers } from 'ethers'
+import { formatNumber } from 'helpers/formatNumber'
 
 interface TokenBalanceProps {
   symbol: string
@@ -17,10 +18,10 @@ export function TokenBalance({ symbol, decimals, balance }: TokenBalanceProps) {
 
   const formattedBalance = parseFloat(
     ethers.utils.formatUnits(balance, decimals)
-  ).toFixed(5)
+  )
   return (
     <>
-      {formattedBalance} {symbol}
+      {formatNumber(formattedBalance)} {symbol}
     </>
   )
 }
