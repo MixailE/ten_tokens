@@ -13,7 +13,7 @@ export default function ({ address }: { address: string }) {
 
   return (
     <>
-      <div className="bg-white rounded-lg mx-3 md:mx-0 p-6 flex flex-row md:w-2/5 lg:w-1/4 justify-between items-center">
+      <div className="bg-white rounded-lg p-6 flex flex-row md:w-2/5 lg:w-1/4 justify-between items-center">
         <ProfileInfo address={address} title="Wallet Overview" />
       </div>
 
