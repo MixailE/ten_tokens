@@ -3,6 +3,8 @@ import { useState } from 'react'
 import { ethers } from 'ethers'
 import { ensRegex, getENSNameByName } from 'store/getENSName'
 import { useController } from '@rest-hooks/react'
+import Spinner from './Spinner'
+import SearchIcon from 'icons/SearchIcon'
 
 export default ({
   value,
@@ -11,6 +13,7 @@ export default ({
   value: string | undefined
   onChange: (value?: string) => void
 }) => {
+  const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [input, setSearch] = useState<string | undefined>(value)
   const handleChangeInput = (event: { target: { value: string } }) => {
@@ -23,7 +26,9 @@ export default ({
     if (!input) return
     if (ensRegex.test(input)) {
       try {
+        setLoading(true)
         const { address } = await ctrl.fetch(getENSNameByName, input)
+        setLoading(false)
 
         if (address) {
           setSearch('')
@@ -34,6 +39,7 @@ export default ({
           return
         }
       } catch (err) {
+        setLoading(false)
         setError('Error resolving ENS name')
         return
       }
@@ -55,21 +61,7 @@ export default ({
       </label>
       <div className="relative w-full">
         <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-          <svg
-            className="w-4 h-4 text-gray-500 dark:text-gray-400"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 20 20"
-          >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-            />
-          </svg>
+          <SearchIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
         </div>
         <input
           value={input}
@@ -80,15 +72,21 @@ export default ({
           placeholder="Search address"
           required
         />
-        {input && input.length > 0 && (
-          <button
-            type="button"
-            onClick={onSubmit}
-            className="absolute end-2.5 bottom-2 focus:backdrop-brightness-90 focus:outline-none font-medium rounded-full text-sm px-2 py-2"
-          >
-            <Arrow className="w-4 h-4 text-gray-500 dark:text-gray-400" />
-          </button>
-        )}
+        {input &&
+          input.length > 0 &&
+          (loading ? (
+            <div className="absolute end-2.5 bottom-2 font-medium rounded-full text-sm px-2 py-2">
+              <Spinner className="inline w-4 h-4 text-slate-400 animate-spin fill-gray-800" />
+            </div>
+          ) : (
+            <button
+              type="button"
+              onClick={onSubmit}
+              className="absolute end-2.5 bottom-2 focus:backdrop-brightness-90 focus:outline-none font-medium rounded-full text-sm px-2 py-2"
+            >
+              <Arrow className="w-4 h-4" />
+            </button>
+          ))}
       </div>
       {error && (
         <p className="mt-2 text-sm text-gray-900">

@@ -7,8 +7,10 @@ import ConnectedAddress from 'components/ConnectedAddress'
 import ArrowBack from 'icons/ArrowBack'
 import { AsyncBoundary } from '@rest-hooks/react'
 import ErrorList from './ErrorList'
+import useLowercasedAddress from 'helpers/useLowercasedAddress'
 
 export default function () {
+  const address = useLowercasedAddress()
   const [input, setInput] = useState<string | undefined>('')
 
   async function onConnect(wallet: WalletInstance) {
@@ -23,7 +25,9 @@ export default function () {
     <div className="sm:p-1 container mx-auto max-w-full sm:max-w-[1060px]">
       <div className="flex justify-center mt-5">
         <div className="w-full flex flex-col justify-center">
-          <div className="flex gap-4 flex-col-reverse mx-3 md:mx-0 sm:flex-row">
+          <div
+            className={`flex gap-4 mx-3 md:mx-0 ${address ? 'flex-col-reverse sm:flex-row' : ''}`}
+          >
             <div className="flex-grow flex">
               <AsyncBoundary fallback={null} errorComponent={ErrorList}>
                 <Search value={input} onChange={setInput} />
@@ -31,7 +35,8 @@ export default function () {
             </div>
             <div>
               <ConnectWallet
-                className="w-full"
+                btnTitle="Connect"
+                className="w-full !min-w-20 md:!min-w-36"
                 onConnect={onConnect}
                 detailsBtn={ConnectedAddress}
               />
