@@ -4,6 +4,7 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 import { visualizer } from 'rollup-plugin-visualizer'
 
 export default defineConfig({
+  base: '/ten_tokens/',
   plugins: [react(), tsconfigPaths()],
   build: {
     rollupOptions: {
