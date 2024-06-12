@@ -17,7 +17,7 @@ export default function () {
 
   return (
     <div className="sm:p-1 container mx-auto max-w-full sm:max-w-[1060px]">
-      <div className="flex justify-center mt-5">
+      <div className="flex justify-center pt-5">
         <div className="w-full flex flex-col justify-center">
           <Header search={selectedAddress} onChangeSearch={onSetAddress} />
 
