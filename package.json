@@ -1,8 +1,9 @@
 {
-  "name": "frontend-starter",
+  "name": "ten_tokens",
   "version": "1.0.0",
   "license": "MIT",
   "type": "module",
+  "homepage": "https://mixaile.github.io/ten_tokens",
   "scripts": {
     "start": "vite",
     "build": "cross-env NODE_ENV=production tsc && vite build",
