@@ -1,7 +1,7 @@
 import Arrow from 'icons/Arrow'
 import { SyntheticEvent, useState } from 'react'
 import { ethers } from 'ethers'
-import { ensRegex, getENSNameByName } from 'store/getENSName'
+import { ensRegex, getAddressByENS } from 'store/getENS'
 import { useController } from '@rest-hooks/react'
 import Spinner from '../shared/Spinner'
 import SearchIcon from 'icons/SearchIcon'
@@ -28,7 +28,7 @@ export default ({
     if (ensRegex.test(search)) {
       try {
         setLoading(true)
-        const { address } = await ctrl.fetch(getENSNameByName, search)
+        const { address } = await ctrl.fetch(getAddressByENS, search)
         setLoading(false)
 
         if (address) {

@@ -1,11 +1,11 @@
-import { Endpoint, NetworkError } from '@rest-hooks/rest'
+import { Endpoint } from '@rest-hooks/rest'
 import { publicMainnetProvider } from 'helpers/getProvider'
 import { ENS } from './ENS'
 
 export const ensRegex =
   /^(?=.{1,255}$)(?:(?!-)[a-z0-9-]{1,63}(?<!-)\.)+[a-z]{2,63}$/
 
-export const getENSNameByName = new Endpoint(
+export const getAddressByENS = new Endpoint(
   async (search: string) => {
     const address = await publicMainnetProvider.resolveName(search)
 
@@ -15,12 +15,12 @@ export const getENSNameByName = new Endpoint(
     }
   },
   {
-    name: 'getENSNameByName',
+    name: 'getAddressByENS',
     schema: ENS,
   }
 )
 
-export const getENSNameByAddress = new Endpoint(
+export const getENSByAddress = new Endpoint(
   async (address: string) => {
     const ensName = await publicMainnetProvider.lookupAddress(address)
 
@@ -30,7 +30,7 @@ export const getENSNameByAddress = new Endpoint(
     }
   },
   {
-    name: 'getENSNameByName',
+    name: 'getENSByAddress',
     schema: ENS,
   }
 )
